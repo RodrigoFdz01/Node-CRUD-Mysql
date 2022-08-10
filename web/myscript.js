@@ -9,6 +9,7 @@ form.addEventListener("submit", (event) => {
     userName: userName,
     userLastName: userLastName,
   };
+  console.log(dataInfo);
   let dataJson = JSON.stringify(dataInfo);
   // mandar data al backend
   fetch("http://localhost:3000/adduser", {

@@ -48,17 +48,32 @@ app.get("/users", (req, res) => {
 });
 
 app.post("/adduser", (req, res) => {
-  const { name, lastName } = req.body;
-  console.log(req.body);
-  // const sql = `INSERT INTO usuarios (name , lastName) VALUES ('${name}', '${lastName}')`;
-  const sql = `INSERT INTO usuarios (name , lastName) VALUES ('Keith', 'RICHARDS')`;
-  const customer = {
-    name: req.body,
-    lastName: req.body,
-  };
+  const { userName, userLastName } = req.body;
+  // console.log(userName);
+
+  const sql = `INSERT INTO usuarios (name , lastName) VALUES ('${userName}', '${userLastName}')`;
+
+  // const customer = {
+  //   userName: req.body.userName,
+  //   userLastName: req.body.userLastName,
+  // };
+
+  // no es necesario pasar ucstomer si ya pase los datos por la const sql...
   connection.query(sql, customer, (error) => {
     if (error) throw error;
     res.send("Customer created!!");
+  });
+});
+
+app.delete("/delete", (req, res) => {
+  const { id } = req.params;
+  const { name, lastName } = req.body;
+  const sql = `DELETE FROM usuarios WHERE name = 'undefined'`;
+  // otra opcion
+  //const sql = `DELETE FROM usuarios WHERE usuario_id > '5'`;
+  connection.query(sql, (error) => {
+    if (error) throw error;
+    res.send("Customer deleted");
   });
 });
 
@@ -81,5 +96,5 @@ connection.connect((error) => {
 });
 
 app.listen(port, () => {
-  console.log(`estoy ejecutandome en el puerto ` + `${port}`);
+  console.log(`Estoy ejecutandome en el puerto ` + `${port}`);
 });
