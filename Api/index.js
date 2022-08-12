@@ -50,25 +50,23 @@ app.get("/users", (req, res) => {
 app.post("/adduser", (req, res) => {
   const { userName, userLastName } = req.body;
   // console.log(userName);
-
   const sql = `INSERT INTO usuarios (name , lastName) VALUES ('${userName}', '${userLastName}')`;
-
   // const customer = {
   //   userName: req.body.userName,
   //   userLastName: req.body.userLastName,
   // };
 
-  // no es necesario pasar ucstomer si ya pase los datos por la const sql...
+  // no es necesario pasar customer si ya pase los datos por la const sql...
   connection.query(sql, customer, (error) => {
     if (error) throw error;
-    res.send("Customer created!!");
+    res.send("Customer created!!!");
   });
 });
 
-app.delete("/delete", (req, res) => {
+app.delete("/delete/:id", (req, res) => {
   const { id } = req.params;
   const { name, lastName } = req.body;
-  const sql = `DELETE FROM usuarios WHERE name = 'undefined'`;
+  const sql = `DELETE FROM usuarios WHERE usuario_id = ${id}`;
   // otra opcion
   //const sql = `DELETE FROM usuarios WHERE usuario_id > '5'`;
   connection.query(sql, (error) => {
@@ -79,8 +77,11 @@ app.delete("/delete", (req, res) => {
 
 app.put("/update/:id", (req, res) => {
   const { id } = req.params;
-  const { name, lastName } = req.body;
-  const sql = `UPDATE usuarios SET name = '${name}', lastName='${lastName}' WHERE usuario_id =${id}`;
+  //const { name, lastName } = req.body;
+  const { userName, userLastName } = req.body;
+
+  const sql = `UPDATE usuarios SET name = '${userName}', lastName='${userLastName}' WHERE usuario_id =${id}`;
+  //const sql = `UPDATE usuarios SET lastName = "Richrdas" WHERE usuario_id = "237" `;
 
   connection.query(sql, (error) => {
     if (error) throw error;
