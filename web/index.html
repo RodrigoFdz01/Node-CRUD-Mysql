@@ -7,15 +7,13 @@
     <title>Document</title>
   </head>
   <body>
-    <h2>Hola desde archivo index html</h2>
-
     <div>
       <form id="dataForm">
+        <h2>fetch con Post</h2>
         <div>
           <label for="name">Name</label>
           <input type="text" id="userName" />
         </div>
-
         <div>
           <label for="lastName">lastName</label>
           <input type="text" id="userLastName" />
@@ -24,6 +22,29 @@
       </form>
     </div>
 
-    <script src="myscript.js"></script>
+    <hr />
+
+    <div>
+      <form id="dataForm2">
+        <h2>fetch con Put</h2>
+        <div>
+          <label for="usuer_id">usuario_id</label>
+          <input type="text" id="user_id" />
+        </div>
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="userName2" />
+        </div>
+
+        <div>
+          <label for="lastName">lastName</label>
+          <input type="text" id="userLastName2" />
+        </div>
+        <button>SEND</button>
+      </form>
+    </div>
+
+    <script src="postFetch.js"></script>
+    <script src="putFetch.js"></script>
   </body>
 </html>
