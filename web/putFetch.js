@@ -2,7 +2,6 @@ let form2 = document.getElementById("dataForm2");
 
 form2.addEventListener("submit", (event) => {
   event.preventDefault();
-  console.log("dataForm2----------");
 
   let id = document.getElementById("user_id").value;
   let userName = document.getElementById("userName2").value;
@@ -12,13 +11,12 @@ form2.addEventListener("submit", (event) => {
     userName: userName,
     userLastName: userLastName,
   };
-  console.log(dataInfo2);
+  //console.log(dataInfo2);
   let dataJson2 = JSON.stringify(dataInfo2);
   // mandar data al backend
-  fetch("http://localhost:3000/update/:usuarioId", {
+  fetch("http://localhost:3000/update/:id", {
     method: "Put",
     body: dataJson2,
   });
-
-  console.log(dataJson2);
+  //  console.log(dataJson2);
 });
