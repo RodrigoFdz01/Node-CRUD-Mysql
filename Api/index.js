@@ -57,7 +57,7 @@ app.post("/adduser", (req, res) => {
   // };
 
   // no es necesario pasar customer si ya pase los datos por la const sql...
-  connection.query(sql, customer, (error) => {
+  connection.query(sql, (error) => {
     if (error) throw error;
     res.send("Customer created!!!");
   });
@@ -81,7 +81,7 @@ app.put("/update/:id", (req, res) => {
   const { userName, userLastName } = req.body;
 
   const sql = `UPDATE usuarios SET name = '${userName}', lastName='${userLastName}' WHERE usuario_id =${id}`;
-  //const sql = `UPDATE usuarios SET lastName = "Richrdas" WHERE usuario_id = "237" `;
+  //const sql = `UPDATE usuarios SET lastName = "Fernande" WHERE usuario_id = "244" `;
 
   connection.query(sql, (error) => {
     if (error) throw error;
