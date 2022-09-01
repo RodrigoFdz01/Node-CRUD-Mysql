@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
   database: "prueba",
 });
 
-router.get("/", (req, res) => {
+router.get("/users", (req, res) => {
   const sql = "SELECT * FROM usuarios";
 
   connection.query(sql, (error, results) => {

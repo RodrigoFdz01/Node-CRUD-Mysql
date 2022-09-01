@@ -8,15 +8,16 @@ const connection = mysql.createConnection({
   database: "prueba",
 });
 
-router.delete("", (req, res) => {
+router.get("/:id", (req, res) => {
   const { id } = req.params;
-  // const { name, lastName } = req.body;
-  const sql = `DELETE FROM usuarios WHERE usuario_id = ${id}`;
-  // otra opcion
-  //const sql = `DELETE FROM usuarios WHERE usuario_id > '5'`;
-  connection.query(sql, (error) => {
+  const sql = `select * from usuarios where usuario_id = ${id}`;
+  connection.query(sql, (error, results) => {
     if (error) throw error;
-    res.send("Customer deleted");
+    if (results.length > 0) {
+      res.json(results);
+    } else {
+      res.send("Not result");
+    }
   });
 });
 
