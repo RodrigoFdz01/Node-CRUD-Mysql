@@ -29,12 +29,6 @@ const connection = mysql.createConnection({
   database: "prueba",
 });
 
-//Routes
-// const GetAllUsers = require("./routes/getAllusers");
-// const GetUser = require("./routes/getuser");
-// const AddUser = require("./routes/adduser");
-// const DeleteUser = require("./routes/deleteuser");
-
 app.put("/update/:id", (req, res) => {
   // const { id } = req.params;
   //const { name, lastName } = req.body;
@@ -47,9 +41,9 @@ app.put("/update/:id", (req, res) => {
   });
 });
 
-//Middlewares
+//Routes
 
-app.use("/users", require("./routes/getAllusers"));
+app.use("/", require("./routes/getAllusers"));
 app.use("/user", require("./routes/getuser"));
 // app.use("/add", require("./routes/adduser"));
 // app.use("/delete/:id", require("./routes/deleteuser"));
