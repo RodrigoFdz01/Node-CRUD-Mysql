@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
   database: "prueba",
 });
 
-router.delete("", (req, res) => {
+router.delete("/:id", (req, res) => {
   const { id } = req.params;
   // const { name, lastName } = req.body;
   const sql = `DELETE FROM usuarios WHERE usuario_id = ${id}`;

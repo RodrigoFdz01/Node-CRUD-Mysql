@@ -29,24 +29,14 @@ const connection = mysql.createConnection({
   database: "prueba",
 });
 
-app.put("/update/:id", (req, res) => {
-  // const { id } = req.params;
-  //const { name, lastName } = req.body;
-  const { id, userName, userLastName } = req.body;
-  const sql = `UPDATE usuarios SET name = '${userName}', lastName='${userLastName}' WHERE usuario_id = '${id}'`;
-  //const sql = `UPDATE usuarios SET lastName = "Richrdas" WHERE usuario_id = "237" `;
-  connection.query(sql, (error) => {
-    if (error) throw error;
-    res.send("Customer updated!");
-  });
-});
-
 //Routes
+const routes = require("./routes/index.routes.js");
+app.use(routes);
 
-app.use("/", require("./routes/getAllusers"));
-app.use("/user", require("./routes/getuser"));
-// app.use("/add", require("./routes/adduser"));
-// app.use("/delete/:id", require("./routes/deleteuser"));
+// app.use("/", require("./routes/getAllusers"));
+// app.use("/users", require("./routes/getuser"));
+// app.use("/users", require("./routes/adduser"));
+// app.use("/delete", require("./routes/deleteuser"));
 
 // check conncetion
 connection.connect((error) => {

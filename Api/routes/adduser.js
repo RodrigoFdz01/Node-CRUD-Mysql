@@ -7,7 +7,7 @@ const connection = mysql.createConnection({
   password: "password",
   database: "prueba",
 });
-router.post("", (req, res) => {
+router.post("/", (req, res) => {
   const { userName, userLastName } = req.body;
   console.log(req.body);
   const sql = `INSERT INTO usuarios (name , lastName) VALUES ('${userName}', '${userLastName}')`;
@@ -22,4 +22,4 @@ router.post("", (req, res) => {
   });
 });
 
-// module.exports = router;
+module.exports = router;
