@@ -8,7 +8,7 @@ getAll.addEventListener("click", function () {
       //console.log(names);
       names.map(function (e) {
         let lu = document.createElement("ul");
-        lu.innerHTML = `<h3>${e.name}-${e.usuario_id}</h3>`;
+        lu.innerHTML = `<h3>${e.name}-${e.lastName}-${e.usuario_id}</h3>`;
         let divContainer = document.getElementById("div2");
         divContainer.appendChild(lu);
         //console.log(e);

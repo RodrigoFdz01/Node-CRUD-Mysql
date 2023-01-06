@@ -12,7 +12,7 @@ form.addEventListener("submit", (event) => {
   console.log(dataInfo);
   let dataJson = JSON.stringify(dataInfo);
   // mandar data al backend
-  fetch("http://localhost:3000/adduser", {
+  fetch("http://localhost:3000/add", {
     method: "Post",
     body: dataJson,
   });
